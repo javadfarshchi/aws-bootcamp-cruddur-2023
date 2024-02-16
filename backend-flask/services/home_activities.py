@@ -3,7 +3,8 @@ import logging
 
 
 class HomeActivities:
-  def run(logger):
+#  def run(logger):
+  def run():
     #logger.info("home activities")
     now = datetime.now(timezone.utc).astimezone()
     results = [{
