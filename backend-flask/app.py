@@ -31,7 +31,7 @@ import watchtower
 import logging
 from time import strftime
 
-
+# Cloud watch logs
 # Configuring Logger to Use CloudWatch
 # LOGGER = logging.getLogger(__name__)
 # LOGGER.setLevel(logging.DEBUG)
@@ -50,9 +50,8 @@ trace.set_tracer_provider(provider)
 tracer = trace.get_tracer(__name__)
 
 # X-RAY
-# xray_url = os.getenv("AWS_XRAY_URL")
-# xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
-
+xray_url = os.getenv("AWS_XRAY_URL")
+xray_recorder.configure(service='backend-flask', dynamic_naming=xray_url)
 
 app = Flask(__name__)
 
@@ -63,7 +62,7 @@ import rollbar.contrib.flask
 from flask import got_request_exception
 
 # X-RAY
-# XRayMiddleware(app, xray_recorder)
+XRayMiddleware(app, xray_recorder)
 
 FlaskInstrumentor().instrument_app(app)
 RequestsInstrumentor().instrument()
@@ -80,6 +79,7 @@ cors = CORS(
   methods="OPTIONS,GET,HEAD,POST"
 )
 
+# Cloudwatch logs
 # @app.after_request
 # def after_request(response):
 #     timestamp = strftime('[%Y-%b-%d %H:%M]')
