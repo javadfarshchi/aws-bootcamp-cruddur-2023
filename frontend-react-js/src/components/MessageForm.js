@@ -25,10 +25,11 @@ export default function ActivityForm(props) {
       } else {
         json.message_group_uuid = params.message_group_uuid
       }
+
       const res = await fetch(backend_url, {
         method: "POST",
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,          
+          'Authorization': `Bearer ${localStorage.getItem("access_token")}`,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
@@ -42,7 +43,8 @@ export default function ActivityForm(props) {
           window.location.href = `/messages/${data.message_group_uuid}`
         } else {
           props.setMessages(current => [...current,data]);
-        }      } else {
+        }
+      } else {
         console.log(res)
       }
     } catch (err) {
