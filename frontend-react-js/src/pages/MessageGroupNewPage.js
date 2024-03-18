@@ -8,9 +8,6 @@ import MessagesFeed from '../components/MessageFeed';
 import MessagesForm from '../components/MessageForm';
 import checkAuth from '../lib/CheckAuth';
 
-// [TODO] Authenication
-import Cookies from 'js-cookie'
-
 export default function MessageGroupPage() {
   const [otherUser, setOtherUser] = React.useState([]);
   const [messageGroups, setMessageGroups] = React.useState([]);
@@ -56,7 +53,7 @@ export default function MessageGroupPage() {
     } catch (err) {
       console.log(err);
     }
-  };
+  };  
 
   React.useEffect(()=>{
     //prevents double call
