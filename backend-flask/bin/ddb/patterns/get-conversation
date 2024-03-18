@@ -17,16 +17,17 @@ dynamodb = boto3.client('dynamodb',**attrs)
 table_name = 'cruddur-messages'
 
 message_group_uuid = "5ae290ed-55d1-47a0-bc6d-fe2bc2700399"
+current_year = str(datetime.datetime.now().year)
 
 # define the query parameters
 query_params = {
   'TableName': table_name,
-  'KeyConditionExpression': 'pk = :pkey AND begins_with(sk, :year)',
+  'KeyConditionExpression': 'pk = :pk AND begins_with(sk, :year)',
   'ScanIndexForward': True,
   'Limit': 20,
   'ExpressionAttributeValues': {
-    ':pkey': {'S': f"MSG#{message_group_uuid}"},
-    ':year': {'S': '2024'},
+    ':year': {'S': current_year},
+    ':pk': {'S': f"MSG#{message_group_uuid}"},
   },
   'ReturnConsumedCapacity': 'TOTAL'
 }
@@ -41,7 +42,7 @@ print(json.dumps(response, sort_keys=True, indent=2))
 print(json.dumps(response['ConsumedCapacity'], sort_keys=True, indent=2))
 
 items = response['Items']
-reversed_array = items[::-1]
+reversed_array = items.reverse()
 
 for item in reversed_array:
   sender_handle = item['user_handle']['S']
