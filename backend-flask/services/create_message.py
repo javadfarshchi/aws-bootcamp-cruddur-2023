@@ -80,4 +80,5 @@ class CreateMessage:
           other_user_handle=other_user['handle']
         )
       model['data'] = data
+    print('===========model', model)
     return model
