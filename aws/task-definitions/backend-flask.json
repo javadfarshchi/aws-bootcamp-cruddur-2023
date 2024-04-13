@@ -42,7 +42,7 @@
         "environment": [
           {"name": "OTEL_SERVICE_NAME", "value": "backend-flask"},
           {"name": "OTEL_EXPORTER_OTLP_ENDPOINT", "value": "https://api.honeycomb.io"},
-          {"name": "AWS_COGNITO_USER_POOL_ID", "value": "${AWS_COGNITO_USER_POOL_ID}"},
+          {"name": "AWS_COGNITO_USER_POOL_ID", "value": "ca-central-1_JF7hsodKV"},
           {"name": "AWS_COGNITO_USER_POOL_CLIENT_ID", "value": "4qi33takg94f3oeq5db5p71qdi"},
           {"name": "FRONTEND_URL", "value": "*"},
           {"name": "BACKEND_URL", "value": "*"},
