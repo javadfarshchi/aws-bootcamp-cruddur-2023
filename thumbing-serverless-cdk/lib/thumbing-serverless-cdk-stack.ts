@@ -2,12 +2,8 @@ import * as cdk from 'aws-cdk-lib';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import { Construct } from 'constructs';
-import { Lambda } from 'aws-cdk-lib/aws-ses-actions';
 import * as dotenv from 'dotenv';
 
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
-
-// const dotenv = require('dotenv')
 dotenv.config();
 
 export class ThumbingServerlessCdkStack extends cdk.Stack {
@@ -21,7 +17,7 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     const folderOutput: string = process.env.THUMBING_S3_FOLDER_OUTPUT as string;
 
     const bucket = this.createBucket(bucketName);
-    const lambda = this.createBucket(functionPath);
+    const lambda = this.createLambda(functionPath, bucketName, folderInput, folderOutput);
 
   }
 
@@ -32,15 +28,6 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     });
     return bucket;
   }
-
-  // createBucket(bucketName: string): s3.IBucket {
-  //   const bucket = new s3.Bucket(this, `ThumbingBucket-${Math.random().toString(36).substring(2, 15)}`, {
-  //     bucketName: bucketName,
-  //     removalPolicy: cdk.RemovalPolicy.DESTROY
-  //   });
-  //   return bucket;
-  // }
-  
 
   createLambda(functionPath: string, bucketName: string, folderInput: string, folderOutput: string): lambda.IFunction {
     const lambdaFunction = new lambda.Function(this, 'ThumbLambda', {
@@ -57,5 +44,5 @@ export class ThumbingServerlessCdkStack extends cdk.Stack {
     });
     return lambdaFunction;
   } 
-  
+
 }
