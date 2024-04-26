@@ -33,10 +33,10 @@ tasks:
       sudo dpkg -i session-manager-plugin.deb
   - name: aws cdk
     before: |
-      cd thumbing-serverless-cdk
       npm install -g aws-cdk
-      npm i --save-dev
-      npm i dotenv
+      cd thumbing-serverless-cdk
+      npm i
+
 vscode:
   extensions:
     - 42Crunch.vscode-openapi
