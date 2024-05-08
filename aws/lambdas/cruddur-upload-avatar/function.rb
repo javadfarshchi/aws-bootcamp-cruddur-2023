@@ -9,7 +9,7 @@ def handler(event:, context:)
     { 
       headers: {
         "Access-Control-Allow-Headers": "*, Authorization",
-        "Access-Control-Allow-Origin": "https://3000-javadfarshc-awsbootcamp-9d5f9u9p2ts.ws-us110.gitpod.io",
+        "Access-Control-Allow-Origin": "https://3000-javadfarshc-awsbootcamp-8hv4sh3efuv.ws-us110.gitpod.io",
         "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
       },
       statusCode: 200
@@ -37,7 +37,7 @@ def handler(event:, context:)
     { 
       headers: {
         "Access-Control-Allow-Headers": "*, Authorization",
-        "Access-Control-Allow-Origin": "https://3000-javadfarshc-awsbootcamp-9d5f9u9p2ts.ws-us110.gitpod.io",
+        "Access-Control-Allow-Origin": "https://3000-javadfarshc-awsbootcamp-8hv4sh3efuv.ws-us110.gitpod.io",
         "Access-Control-Allow-Methods": "OPTIONS,GET,POST"
       },
       statusCode: 200, 
