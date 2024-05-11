@@ -1,4 +1,5 @@
 import { Auth } from 'aws-amplify';
+import { resolvePath } from 'react-router-dom';
 
 export async function getAccessToken(){
   Auth.currentSession()
@@ -7,10 +8,10 @@ export async function getAccessToken(){
     localStorage.setItem("access_token", access_token)
   })
   .catch((err) => console.log(err));
-};
+}
 
 export async function checkAuth(setUser){
-    Auth.currentAuthenticatedUser({
+  Auth.currentAuthenticatedUser({
     // Optional, By default is false. 
     // If set to true, this call will send a 
     // request to Cognito to get the latest user data
@@ -23,7 +24,7 @@ export async function checkAuth(setUser){
     })
     return Auth.currentSession()
   }).then((cognito_user_session) => {
-    localStorage.setItem("access_token", cognito_user_session.accessToken.jwtToken)
+      localStorage.setItem("access_token", cognito_user_session.accessToken.jwtToken)
   })
   .catch((err) => console.log(err));
 };
