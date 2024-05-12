@@ -128,6 +128,10 @@ cors = CORS(
 #     rollbar.report_message('Hello World!', 'warning')
 #     return "Hello World!"
 
+@app.route('/api/health-check')
+def health_check():
+  return {'success': True, 'ver': 1}, 200
+
 @app.route("/api/message_groups", methods=['GET'])
 def data_message_groups():
   access_token = extract_access_token(request.headers)
